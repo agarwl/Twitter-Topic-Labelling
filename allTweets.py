@@ -54,12 +54,12 @@ def get_all_tweets(screen_name):
         #all subsiquent requests use the max_id param to prevent duplicates
         new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
 
-        #update the id of the oldest tweet less one
-        oldest = new_tweets[-1].id - 1
-
         new_tweets = [tweet for tweet in new_tweets if (not_photo_tweet(tweet) and tweet.lang == 'en')]
         #save most recent tweets
         alltweets.extend(new_tweets)
+
+         #update the id of the oldest tweet less one
+        oldest = alltweets[-1].id - 1
 
         print("...%s tweets downloaded so far" % (len(alltweets)))
 
