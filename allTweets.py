@@ -11,6 +11,8 @@ consumer_secret = "v6Dq1RLF7TPrccdskvMTahlMaGPGFsQ0AnvQxDgCaBsesDm9iy"
 access_key = "726727268391878656-wl60horopZ4HoGpwaJWXZ4Bl9ZkvD7f"
 access_secret = "3xaa3QpuJY3jdFj7xNW9b2oEqTWtvrjkySvffaYiZWwbB"
 
+
+
 #returns true is the tweet is a text tweet
 def not_photo_tweet(tweet):
     try:
