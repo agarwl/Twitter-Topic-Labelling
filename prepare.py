@@ -87,15 +87,20 @@ for myfile in files:
             all_tweets.append(tweets)
         print myfile + " done"
 cPickle.dump(all_tweets,open('all_tweets.p','wb'))
-texts = []
+texts,texts1 = [],[]
 # print doc_set
 # loop through document list
 for doc in doc_set:
-    texts.append(mytokenize(doc))
+    texts1.append(mytokenize(doc))
 
 # turn our tokenized documents into a id <-> term dictionary
-dictionary = corpora.Dictionary(texts)
+dictionary = corpora.Dictionary(texts1)
 cPickle.dump(dictionary,open('dictionary.p','wb'))
+
+for tweets in all_tweets:
+    doc = " ".join(tweets[0:int(len(tweets)*0.8)])
+    texts.append(mytokenize(doc))
+
 # convert tokenized documents into a document-term matrix
 corpus = [dictionary.doc2bow(text) for text in texts]
 
